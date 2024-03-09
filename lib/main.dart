@@ -49,75 +49,31 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text('Hello'),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      Container(
-                      margin: EdgeInsets.only(bottom: 11),
-                      height: 200,
-                      width: 200,
-                      color: Colors.lightGreen,
-                    ),
-                      Container(
-                      margin: EdgeInsets.only(bottom: 11),
-                      height: 200,
-                      width: 200,
-                      color: Colors.orange,
-                    ),
-                      Container(
-                      margin: EdgeInsets.only(bottom: 11),
-                      height: 200,
-                      width: 200,
-                      color: Colors.blue,
-                    ),
-                    ]
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 11),
-                  height: 200,
-                  // width: 200,
-                  color: Colors.lightGreen,
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 11),
-                  height: 200,
-                  // width: 200,
-                  color: Colors.lightGreen,
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 11),
-                  height: 200,
-                  // width: 200,
-                  color: Colors.lightGreen,
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 11),
-                  height: 200,
-                  // width: 200,
-                  color: Colors.lightGreen,
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 11),
-                  height: 200,
-                  // width: 200,
-                  color: Colors.lightGreen,
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 11),
-                  height: 200,
-                  // width: 200,
-                  color: Colors.lightGreen,
-                ),
-              ],
+        body: ListView(
+          scrollDirection: Axis.vertical,
+          reverse: true,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child : Text('One', style : TextStyle(fontSize: 21, fontWeight: FontWeight.w500))
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child : Text('Two', style : TextStyle(fontSize: 21, fontWeight: FontWeight.w500))
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child : Text('Three', style : TextStyle(fontSize: 21, fontWeight: FontWeight.w500))
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child : Text('Four', style : TextStyle(fontSize: 21, fontWeight: FontWeight.w500))
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child : Text('Five', style : TextStyle(fontSize: 21, fontWeight: FontWeight.w500))
+            ),
+          ],
         )
     );
   }
