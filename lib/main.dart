@@ -48,13 +48,11 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text('Hello'),
         ),
-        body: TextButton(child: Text('Click Here!!'),
-              onPressed: (){
-                print('Text Button Tapped!');
-              },
-              onLongPress: (){
-                print('Long Pressed!!');
-              }
+        body: ElevatedButton(
+          child : Text('Elevated Button'),
+          onPressed: (){
+            print('Button Pressed');
+          },
         )
     );
   }
