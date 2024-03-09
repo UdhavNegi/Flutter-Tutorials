@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,21 +49,73 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text('Hello'),
         ),
-        body: Center(
-          child: InkWell(
-              onTap : (){print('Tapped on container');},
-              onLongPress : (){print('Long Pressed on container');},
-              onDoubleTap : (){print('Double Tapped on container');},
-            child: Container(
-              width: 200,
-              height: 200,
-              color: Colors.amber,
-              child: Center(child: InkWell(
-                onTap: (){
-                  print("Text widget Tapped!");
-                },
-                child: Text('Click Here', style: TextStyle(fontSize: 21, fontWeight: FontWeight.w700),))),
-              
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      Container(
+                      margin: EdgeInsets.only(bottom: 11),
+                      height: 200,
+                      width: 200,
+                      color: Colors.lightGreen,
+                    ),
+                      Container(
+                      margin: EdgeInsets.only(bottom: 11),
+                      height: 200,
+                      width: 200,
+                      color: Colors.orange,
+                    ),
+                      Container(
+                      margin: EdgeInsets.only(bottom: 11),
+                      height: 200,
+                      width: 200,
+                      color: Colors.blue,
+                    ),
+                    ]
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 11),
+                  height: 200,
+                  // width: 200,
+                  color: Colors.lightGreen,
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 11),
+                  height: 200,
+                  // width: 200,
+                  color: Colors.lightGreen,
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 11),
+                  height: 200,
+                  // width: 200,
+                  color: Colors.lightGreen,
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 11),
+                  height: 200,
+                  // width: 200,
+                  color: Colors.lightGreen,
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 11),
+                  height: 200,
+                  // width: 200,
+                  color: Colors.lightGreen,
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 11),
+                  height: 200,
+                  // width: 200,
+                  color: Colors.lightGreen,
+                ),
+              ],
             ),
           ),
         )
