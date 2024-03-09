@@ -48,12 +48,12 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text('Hello'),
         ),
-        body: ElevatedButton(
-          child : Text('Elevated Button'),
+        body: OutlinedButton(
+          child: Text('Outlined Button'),
           onPressed: (){
-            print('Button Pressed');
-          },
-        )
+            print('Outlined Clicked');
+          }
+          )
     );
   }
 }
