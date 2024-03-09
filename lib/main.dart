@@ -54,10 +54,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Container(
-          width : 100,
+          width : 200,
           height: 100,
-          color: Colors.limeAccent,
-          child : Text('Hello Deveops!!') 
+          color: Colors.blueGrey,
+          child : Center(child: Text('This is center of Container', style : TextStyle(color : Colors.white)))
         ),
       ) 
     );
