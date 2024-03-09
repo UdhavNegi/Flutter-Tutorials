@@ -48,33 +48,24 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text('Hello'),
         ),
-        body: Container(
-          height: 300,
-          width: 300,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                Text('R1', style : TextStyle(fontSize: 25)),
-              Text('R2', style : TextStyle(fontSize: 25)),
-              Text('R3', style : TextStyle(fontSize: 25)),
-              Text('R4', style : TextStyle(fontSize: 25)),
-              Text('R5', style : TextStyle(fontSize: 25)),],),
-
-
-              Text('A', style : TextStyle(fontSize: 25)),
-              Text('B', style : TextStyle(fontSize: 25)),
-              Text('C', style : TextStyle(fontSize: 25)),
-              Text('D', style : TextStyle(fontSize: 25)),
-              Text('E', style : TextStyle(fontSize: 25)),
-              ElevatedButton(onPressed: (){
-          
-              }, child: Text('Click'))
-            ],
+        body: Center(
+          child: InkWell(
+              onTap : (){print('Tapped on container');},
+              onLongPress : (){print('Long Pressed on container');},
+              onDoubleTap : (){print('Double Tapped on container');},
+            child: Container(
+              width: 200,
+              height: 200,
+              color: Colors.amber,
+              child: Center(child: InkWell(
+                onTap: (){
+                  print("Text widget Tapped!");
+                },
+                child: Text('Click Here', style: TextStyle(fontSize: 21, fontWeight: FontWeight.w700),))),
+              
+            ),
           ),
-        ));
+        )
+    );
   }
 }
