@@ -48,12 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text('Hello'),
         ),
-        body: OutlinedButton(
-          child: Text('Outlined Button'),
-          onPressed: (){
-            print('Outlined Clicked');
-          }
-          )
+        body: Center(child: Container(width : 100,
+        height : 100,child: Image.asset('assets/images/logo.jpg')))
     );
   }
 }
