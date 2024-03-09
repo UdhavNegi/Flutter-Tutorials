@@ -49,10 +49,22 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text('Hello'),
         ),
         body: Container(
-          child: Row(
+          height: 300,
+          width: 300,
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            // crossAxisAlignment: ,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                Text('R1', style : TextStyle(fontSize: 25)),
+              Text('R2', style : TextStyle(fontSize: 25)),
+              Text('R3', style : TextStyle(fontSize: 25)),
+              Text('R4', style : TextStyle(fontSize: 25)),
+              Text('R5', style : TextStyle(fontSize: 25)),],),
+
+
               Text('A', style : TextStyle(fontSize: 25)),
               Text('B', style : TextStyle(fontSize: 25)),
               Text('C', style : TextStyle(fontSize: 25)),
