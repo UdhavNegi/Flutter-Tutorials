@@ -31,35 +31,26 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-// This is the homepage for our flutter app 
+// This is the homepage for our flutter app
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
-      
       _counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
-      appBar: AppBar(
-        
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        
-        title: Text('First Flutter App'),
-      ),
-      body: Center(
-        child: Container(
-          width : 200,
-          height: 100,
-          color: Colors.blueGrey,
-          child : Center(child: Text('This is center of Container', style : TextStyle(color : Colors.white)))
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text('Hello'),
         ),
-      ) 
-    );
+        body: Text('Hello Flutter Devs', style: TextStyle(fontSize: 25, 
+        color: Colors.lightBlue, 
+        fontWeight: FontWeight.w800,
+        backgroundColor: Colors.deepOrangeAccent)));
   }
 }
