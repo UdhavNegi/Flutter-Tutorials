@@ -48,9 +48,14 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text('Hello'),
         ),
-        body: Text('Hello Flutter Devs', style: TextStyle(fontSize: 25, 
-        color: Colors.lightBlue, 
-        fontWeight: FontWeight.w800,
-        backgroundColor: Colors.deepOrangeAccent)));
+        body: TextButton(child: Text('Click Here!!'),
+              onPressed: (){
+                print('Text Button Tapped!');
+              },
+              onLongPress: (){
+                print('Long Pressed!!');
+              }
+        )
+    );
   }
 }
