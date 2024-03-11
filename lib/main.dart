@@ -71,17 +71,3 @@ class DashBoardScreen extends StatelessWidget{
   }
 }
 
-class Expanded extends StatelessWidget {
-  const Expanded({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width : 50,
-      height: 100,
-      color: Colors.blueGrey,
-    );
-  }
-}
