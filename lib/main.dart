@@ -29,43 +29,10 @@ class DashBoardScreen extends StatelessWidget{
         title : Text("Dashboard"),
       ),
 
-      body : Row(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-            flex : 2,
-            child : Container(width : 50,
-            height: 100,
-            color: Colors.blue,),
-          ),
-          Container(
-            width : 50,
-            height: 100,
-            color: Colors.blue,
-          ),
-
-          // Expanded(
-          //   child : Container(
-            Container(
-              width : 50,
-              height: 100,
-              color: Colors.orange,
-            ),
-          // ),
-
-          
-          Container(
-            width : 50,
-            height: 100,
-            color: Colors.blueGrey,
-          ),
-          
-          Container(
-            width : 50,
-            height: 100,
-            color: Colors.green,
-          ),
-        ],
+      body : Padding(
+        // padding: EdgeInsets.only(top : 11, left : 34),
+        padding: EdgeInsets.all(11),
+        child: Text('Hello world!', style : TextStyle(fontSize: 25),),
       )
     );
   }
