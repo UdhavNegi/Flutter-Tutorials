@@ -29,36 +29,59 @@ class DashBoardScreen extends StatelessWidget{
         title : Text("Dashboard"),
       ),
 
-      body : Container(
-            width : double.infinity,
-            height : double.infinity,
-        color : Colors.blue.shade50,
-        child: Center(
-          child: Container(
-              width : 150,
-              height : 150,
-              decoration: BoxDecoration(
-                color : Colors.blueGrey,
-                // borderRadius: BorderRadius.circular(21),
-                // borderRadius: BorderRadius.only(topLeft: Radius.circular(21), bottomRight: Radius.circular(21)),
-                // borderRadius: BorderRadius.all(Radius.circular(21)),
-                border: Border.all(
-                  width : 2,
-                  color: Colors.black
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 51,
-                    spreadRadius: 11,
-                    color : Colors.grey
+      body : Row(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            flex : 2,
+            child : Container(width : 50,
+            height: 100,
+            color: Colors.blue,),
+          ),
+          Container(
+            width : 50,
+            height: 100,
+            color: Colors.blue,
+          ),
 
-                  )
-                ],
-                shape: BoxShape.circle,
-              ),
+          // Expanded(
+          //   child : Container(
+            Container(
+              width : 50,
+              height: 100,
+              color: Colors.orange,
             ),
-        ),
+          // ),
+
+          
+          Container(
+            width : 50,
+            height: 100,
+            color: Colors.blueGrey,
+          ),
+          
+          Container(
+            width : 50,
+            height: 100,
+            color: Colors.green,
+          ),
+        ],
       )
+    );
+  }
+}
+
+class Expanded extends StatelessWidget {
+  const Expanded({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width : 50,
+      height: 100,
+      color: Colors.blueGrey,
     );
   }
 }
