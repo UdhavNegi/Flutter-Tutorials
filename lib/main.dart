@@ -1,85 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
-void main() {
-  runApp(const MyApp());
+void main()
+{
+  runApp(FlutterApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+class FlutterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title : "FlutterApp",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-        useMaterial3: true,
+        primarySwatch: Colors.blue
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home : DashBoardScreen()
+
     );
   }
+
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-// This is the homepage for our flutter app
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+class DashBoardScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    var arrNames = ['Raman', 'Ramanujan', 'Rajesh', "James", 'John', 'Rahim', 'Ram', ];
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text('Hello'),
-        ),
-        body: ListView.separated(itemBuilder: (context, index){
-          // return Text(arrNames[index], style : TextStyle(fontSize: 21, fontWeight: FontWeight.w500));
-          return Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Text(arrNames[index], style : TextStyle(fontSize: 21, fontWeight: FontWeight.w500)),
-                     Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(arrNames[index], style : TextStyle(fontSize: 11, fontWeight: FontWeight.w500)),
-              ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(arrNames[index], style : TextStyle(fontSize: 21, fontWeight: FontWeight.w500)),
-              ),
-            ],
-          );
-        },
-        itemCount: arrNames.length,
-        // itemExtent: 100,
-        // scrollDirection: Axis.horizontal,
-        separatorBuilder: (context, index){
-          return Divider(height: 100, thickness: 1,);
-        },
-        )
-        );
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title : Text("Dashboard"),
+      ),
+
+      body : Container(
+        color : Colors.blue.shade50
+      )
+    );
   }
 }
