@@ -49,23 +49,31 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text('Hello'),
         ),
-        body: Container(
-          height: 300,
-          width: 300,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('A', style : TextStyle(fontSize: 25)),
-              Text('B', style : TextStyle(fontSize: 25)),
-              Text('C', style : TextStyle(fontSize: 25)),
-              Text('D', style : TextStyle(fontSize: 25)),
-              Text('E', style : TextStyle(fontSize: 25)),
-              ElevatedButton(onPressed: (){
-                print('clicked here');
-              }, child: Text('Click Here'))
+        body: ListView(
+          scrollDirection: Axis.vertical,
+          reverse: true,
+          children: const [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('One', style : TextStyle(fontSize: 21, fontWeight: FontWeight.w500)),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('Two', style : TextStyle(fontSize: 21, fontWeight: FontWeight.w500)),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('Three', style : TextStyle(fontSize: 21, fontWeight: FontWeight.w500)),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('Four', style : TextStyle(fontSize: 21, fontWeight: FontWeight.w500)),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('Five', style : TextStyle(fontSize: 21, fontWeight: FontWeight.w500)),
+            ),
             ],
-          ),
         ));
   }
 }
