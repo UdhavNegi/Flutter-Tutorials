@@ -29,10 +29,13 @@ class DashBoardScreen extends StatelessWidget{
         title : Text("Dashboard"),
       ),
 
-      body : Padding(
-        // padding: EdgeInsets.only(top : 11, left : 34),
-        padding: EdgeInsets.all(11),
-        child: Text('Hello world!', style : TextStyle(fontSize: 25),),
+      body : Container(
+        color : Colors.blueGrey,
+        margin : EdgeInsets.all(11),
+        child: Padding(
+          padding: const EdgeInsets.only(top : 21, left : 34, bottom : 11, right : 34),
+          child: Text('Hello world!', style : TextStyle(fontSize: 25, color : Colors.white),),
+        ),
       )
     );
   }
