@@ -30,7 +30,34 @@ class DashBoardScreen extends StatelessWidget{
       ),
 
       body : Container(
-        color : Colors.blue.shade50
+            width : double.infinity,
+            height : double.infinity,
+        color : Colors.blue.shade50,
+        child: Center(
+          child: Container(
+              width : 150,
+              height : 150,
+              decoration: BoxDecoration(
+                color : Colors.blueGrey,
+                // borderRadius: BorderRadius.circular(21),
+                // borderRadius: BorderRadius.only(topLeft: Radius.circular(21), bottomRight: Radius.circular(21)),
+                // borderRadius: BorderRadius.all(Radius.circular(21)),
+                border: Border.all(
+                  width : 2,
+                  color: Colors.black
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 51,
+                    spreadRadius: 11,
+                    color : Colors.grey
+
+                  )
+                ],
+                shape: BoxShape.circle,
+              ),
+            ),
+        ),
       )
     );
   }
