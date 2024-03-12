@@ -48,28 +48,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text('Hellos'),
+          title: Text('Hello'),
         ),
-        body: Center(
-            child: CircleAvatar(
-              child : Column(
-                children: [
-                  Container(
-                    width : 40,
-                    height : 40,
-                    child: Image.asset('assets/images/kid1.jpg')
-                    ),
-                  Text('Name')
-                  ]
-                
-              ),
-              // backgroundImage: AssetImage('assets/images/kid1.jpg'),
-              // backgroundColor : Colors.green,
-              // radius : 100,
-              // minRadius: 50,
-              maxRadius: 60,
-              ),
-          ),
+        body: Text('Hello World', style: TextStyle(fontFamily: ''),)
         );
   }
 }
