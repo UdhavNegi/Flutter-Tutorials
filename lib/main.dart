@@ -48,21 +48,28 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text('Hello'),
+          title: Text('Hellos'),
         ),
-        body: ListView.separated(itemBuilder: (context, index){
-            return ListTile(
-              leading: Text('${index+1}'),
-              title: Text(arrNames[index]),
-              subtitle: Text('Number'),
-              trailing: Icon(Icons.add),
-            );
-          },
-        itemCount: arrNames.length,
-        separatorBuilder: (context, index){
-          return Divider(height: 20, thickness: 1,);
-        },
-        )
+        body: Center(
+            child: CircleAvatar(
+              child : Column(
+                children: [
+                  Container(
+                    width : 40,
+                    height : 40,
+                    child: Image.asset('assets/images/kid1.jpg')
+                    ),
+                  Text('Name')
+                  ]
+                
+              ),
+              // backgroundImage: AssetImage('assets/images/kid1.jpg'),
+              // backgroundColor : Colors.green,
+              // radius : 100,
+              // minRadius: 50,
+              maxRadius: 60,
+              ),
+          ),
         );
   }
 }
