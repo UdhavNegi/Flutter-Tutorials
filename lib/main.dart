@@ -58,13 +58,14 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Colors.orange,
           title: Text('Hello'),
         ),
-        body: Column(
-          children: [
-            Text('Text 1', style: Theme.of(context).textTheme.headline1!.copyWith(color : Colors.orange)),
-            Text('Text 2', style: Theme.of(context).textTheme.subtitle1,),
-            Text('Text 3', style: Theme.of(context).textTheme.headline2,),
-            Text('Text 4', style: myTextStyle11(textColor : Colors.blue)),
-          ],
+        body: Center(
+          child: Card(
+            elevation : 5,
+            shadowColor: Colors.orange,
+            child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Hello world', style : TextStyle(fontSize: 21)),
+          )),
         )
         );
   }
