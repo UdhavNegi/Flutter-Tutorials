@@ -1,3 +1,4 @@
+import 'package:first_app/ui_helper/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -15,8 +16,15 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-        useMaterial3: true,
+        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        // useMaterial3: true,
+        primarySwatch: Colors.blue,
+        textTheme: TextTheme( 
+          headline1: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+          headline2: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color : Colors.lightGreen),
+          subtitle1: TextStyle(fontSize: 11, fontWeight: FontWeight.w500),
+          subtitle2: TextStyle(fontSize: 11, fontWeight: FontWeight.w500, color : Colors.orange)
+        )
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -47,10 +55,17 @@ class _MyHomePageState extends State<MyHomePage> {
     var arrNames = ['Raman', 'Ramanujan', 'Rajesh', "James", 'John', 'Rahim', 'Ram', ];
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          backgroundColor: Colors.orange,
           title: Text('Hello'),
         ),
-        body: Text('Hello World', style: TextStyle(fontFamily: ''),)
+        body: Column(
+          children: [
+            Text('Text 1', style: Theme.of(context).textTheme.headline1!.copyWith(color : Colors.orange)),
+            Text('Text 2', style: Theme.of(context).textTheme.subtitle1,),
+            Text('Text 3', style: Theme.of(context).textTheme.headline2,),
+            Text('Text 4', style: myTextStyle11(textColor : Colors.blue)),
+          ],
+        )
         );
   }
 }
