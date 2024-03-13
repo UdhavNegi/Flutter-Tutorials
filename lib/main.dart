@@ -68,163 +68,31 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text('Custom widget'),
         ),
         body: Container(
-            child: Column(
-          children: [
-            CatItems(),
-            Contacts(),
-            SubCatItems(),
-            
-            
-            // Expanded(
-            //   flex: 2,
-            //   child: Container(
-            //       color: Colors.green,
-            //       child: GridView.count(
-            //         crossAxisCount: 4,
-            //         children: [
-            //           Padding(
-            //             padding: const EdgeInsets.all(8),
-            //             child: Container(
-            //               decoration: BoxDecoration(
-            //                 borderRadius: BorderRadius.circular(11),
-            //                 color: Colors.blue,
-            //               ),
-            //             ),
-            //           ),
-            //           Padding(
-            //             padding: const EdgeInsets.all(8),
-            //             child: Container(
-            //               decoration: BoxDecoration(
-            //                 borderRadius: BorderRadius.circular(11),
-            //                 color: Colors.blue,
-            //               ),
-            //             ),
-            //           ),
-            //           Padding(
-            //             padding: const EdgeInsets.all(8),
-            //             child: Container(
-            //               decoration: BoxDecoration(
-            //                 borderRadius: BorderRadius.circular(11),
-            //                 color: Colors.blue,
-            //               ),
-            //             ),
-            //           ),
-            //           Padding(
-            //             padding: const EdgeInsets.all(8),
-            //             child: Container(
-            //               decoration: BoxDecoration(
-            //                 borderRadius: BorderRadius.circular(11),
-            //                 color: Colors.blue,
-            //               ),
-            //             ),
-            //           ),
-            //         ],
-            //       )),
-            // ),
-          ],
-        )));
-  }
-}
-
-class CatItems extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: 2,
-      child: Container(
-          color: Colors.blue,
-          child: ListView.builder(
-            itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                width: 100,
-                child: CircleAvatar(
-                  backgroundColor: Colors.green,
+          width: 300,
+          height: 300,
+          child: Stack(
+            children: [
+              Container(
+                width : 200,
+                height : 200,
+                color : Colors.blueGrey
+              ),
+              Positioned(
+                top: 21,
+                left: 21,
+                child: Container(
+                  width : 260,
+                  height : 200,
+                  color : Colors.grey
                 ),
               ),
-            ),
-            itemCount: 10,
-            scrollDirection: Axis.horizontal,
-          )),
-    );
+            ],
+          ),
+        )
+        );
   }
 }
 
-class Contacts extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return 
-    Expanded(
-              flex: 4,
-              child: Container(
-                  color: Colors.orange,
-                  child: ListView.builder(
-                      itemBuilder: (context, index) => Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ListTile(
-                              leading: CircleAvatar(
-                                backgroundColor: Colors.green,
-                              ),
-                              title: Text('Name'),
-                              subtitle: Text('Mob No'),
-                              trailing: Icon(Icons.delete),
-                            ),
-                          ))),
-            );
-    
-  }
-}
 
-class SubCatItems extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return 
-    Expanded(
-              flex: 2,
-              child: Container(
-                  color: Colors.blueGrey,
-                  child: GridView.count(
-                    crossAxisCount: 4,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(11),
-                            color: Colors.blue,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(11),
-                            color: Colors.blue,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(11),
-                            color: Colors.blue,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(11),
-                            color: Colors.blue,
-                          ),
-                        ),
-                      ),
-                    ],
-                  )),
-            );
 
-  }
-}
+
