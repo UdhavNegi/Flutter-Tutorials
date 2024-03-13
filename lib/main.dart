@@ -59,22 +59,35 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text('Hello'),
         ),
         body: Center(
-          child: Container(
-            width : 200,
-            height : 200,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Text('Current Time : ${time.hour}: ${time.minute}: ${time.second}', style : TextStyle(fontSize: 22)),
-                Text('Current Time : ${DateFormat('QQQQ').format(time)}', style : TextStyle(fontSize: 22)),
-                ElevatedButton(onPressed: (){
-                  setState(() {
-                    
-                  });
-                }, child: Text('Click Here'))
-              ],
-            ),
-          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Select Date',
+              style : TextStyle(fontSize: 25),
+              ),
+              ElevatedButton(onPressed: () async {
+                DateTime? datePicked = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2021),
+                  lastDate: DateTime.now());
+                  if(datePicked != null)
+                  { 
+                    print('Date selected: ${datePicked.day}:${datePicked.month}:${datePicked.year}');
+                  }
+              }, child: Text('Show')),
+              ElevatedButton(onPressed: () async {
+                TimeOfDay? pickedTime = await showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay.now(),
+                  initialEntryMode: TimePickerEntryMode.dial);
+                  if(pickedTime != null)
+                  { 
+                    print('Time selected: ${pickedTime.hour}:${pickedTime.minute}');
+                  }
+              }, child: Text('Show')),
+              
+          ],),
         )
     );
   }
