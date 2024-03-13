@@ -2,6 +2,10 @@ import 'package:first_app/ui_helper/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+// for intel date and time 
+// import 'package:intl/intl_browser.dart';
+import 'package:intl/intl.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -61,7 +65,8 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Current Time : ${time.hour}: ${time.minute}: ${time.second}', style : TextStyle(fontSize: 22)),
+                // Text('Current Time : ${time.hour}: ${time.minute}: ${time.second}', style : TextStyle(fontSize: 22)),
+                Text('Current Time : ${DateFormat('QQQQ').format(time)}', style : TextStyle(fontSize: 22)),
                 ElevatedButton(onPressed: (){
                   setState(() {
                     
