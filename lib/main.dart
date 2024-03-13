@@ -48,77 +48,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var time = DateTime.now();
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.orange,
           title: Text('Hello'),
         ),
-        body: Center(child: Container(
-          width : 300,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextField(
-                // enabled: false,
-                keyboardType: TextInputType.phone,
-                controller: emailText,
-                decoration: InputDecoration(
-                  hintText: "Enter Email",
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(11),
-                    borderSide: BorderSide(
-                      color : Colors.deepOrange,
-                      width : 2
-                    )
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(11),
-                    borderSide: BorderSide(
-                      color : Colors.blueAccent,
-                      width : 2
-                    )
-                  ),
-
-                  disabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(11),
-                    borderSide: BorderSide(
-                      color : Colors.black45,
-                      width : 2
-                    )
-                  ),
-                  suffixIcon: IconButton(
-                    icon : Icon(Icons.remove_red_eye, color : Colors.orange),
-                    onPressed: (){
-                    },
-                  ),
-                  prefixIcon: Icon(Icons.phone, color : Colors.orange),
-                ),
-              ),
-              Container(height: 11,),
-              TextField(
-                controller: passText,
-                obscureText: true,
-                obscuringCharacter: '*',
-                decoration: InputDecoration(
-                  hintText: 'Enter password here',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(11),
-                    borderSide: BorderSide(
-                      color : Colors.deepOrange
-                    )
-                  )
-                ),
-              ),
-              ElevatedButton(onPressed: (){
-                String uEmail = emailText.text.toString();
-                String uPass = passText.text;
-
-                print("Email : $uEmail, Pass : $uPass");
-              }, child : Text('Login'))
-            ],
-          )
-          )
-          )
-        );
+        body: Center(
+          child: Container(
+            width : 200,
+            height : 200,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Current Time : ${time.hour}: ${time.minute}: ${time.second}', style : TextStyle(fontSize: 22)),
+                ElevatedButton(onPressed: (){
+                  setState(() {
+                    
+                  });
+                }, child: Text('Click Here'))
+              ],
+            ),
+          ),
+        )
+    );
   }
 }
