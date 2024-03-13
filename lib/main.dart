@@ -52,42 +52,27 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var time = DateTime.now();
+    var arrColors = [Colors.red, Colors.orange, Colors.grey, Colors.blue, Colors.pink, Colors.green, Colors.purpleAccent, Colors.brown];
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.orange,
           title: Text('Hello'),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Select Date',
-              style : TextStyle(fontSize: 25),
-              ),
-              ElevatedButton(onPressed: () async {
-                DateTime? datePicked = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(2021),
-                  lastDate: DateTime.now());
-                  if(datePicked != null)
-                  { 
-                    print('Date selected: ${datePicked.day}:${datePicked.month}:${datePicked.year}');
-                  }
-              }, child: Text('Show')),
-              ElevatedButton(onPressed: () async {
-                TimeOfDay? pickedTime = await showTimePicker(
-                  context: context,
-                  initialTime: TimeOfDay.now(),
-                  initialEntryMode: TimePickerEntryMode.dial);
-                  if(pickedTime != null)
-                  { 
-                    print('Time selected: ${pickedTime.hour}:${pickedTime.minute}');
-                  }
-              }, child: Text('Show')),
-              
-          ],),
+        body: GridView.count(
+          crossAxisCount: 4,
+          crossAxisSpacing: 11,
+          mainAxisSpacing: 11,
+          children: [
+            // Container(color : Colors.black),
+            Container(color : arrColors[0]),
+            Container(color : arrColors[1]),
+            Container(color : arrColors[2]),
+            Container(color : arrColors[3]),
+            Container(color : arrColors[4]),
+            Container(color : arrColors[5]),
+            Container(color : arrColors[6]),
+            Container(color : arrColors[7]),
+          ],
         )
     );
   }
