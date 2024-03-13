@@ -56,23 +56,41 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.orange,
-          title: Text('Hello'),
+          title: Text('Hellos'),
         ),
-        body: GridView.count(
-          crossAxisCount: 4,
-          crossAxisSpacing: 11,
-          mainAxisSpacing: 11,
-          children: [
-            // Container(color : Colors.black),
-            Container(color : arrColors[0]),
-            Container(color : arrColors[1]),
-            Container(color : arrColors[2]),
-            Container(color : arrColors[3]),
-            Container(color : arrColors[4]),
-            Container(color : arrColors[5]),
-            Container(color : arrColors[6]),
-            Container(color : arrColors[7]),
-          ],
+        // body: GridView.count(
+        //   crossAxisCount: 4,
+        //   crossAxisSpacing: 11,
+        //   mainAxisSpacing: 11,
+        //   children: [
+        //     Container(color : arrColors[0]),
+        //     Container(color : arrColors[1]),
+        //     Container(color : arrColors[2]),
+        //     Container(color : arrColors[3]),
+        //     Container(color : arrColors[4]),
+        //     Container(color : arrColors[5]),
+        //     Container(color : arrColors[6]),
+        //     Container(color : arrColors[7]),
+        //   ],
+        // )
+
+        body : Container(
+          height: 300,
+          child: GridView.extent(
+            maxCrossAxisExtent: 100,
+            crossAxisSpacing: 11,
+            mainAxisSpacing: 11,
+            children: [
+              Container(color : arrColors[0]),
+              Container(color : arrColors[1]),
+              Container(color : arrColors[2]),
+              Container(color : arrColors[3]),
+              Container(color : arrColors[4]),
+              Container(color : arrColors[5]),
+              Container(color : arrColors[6]),
+              Container(color : arrColors[7]),
+            ],
+            ),
         )
     );
   }
