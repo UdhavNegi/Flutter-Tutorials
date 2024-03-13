@@ -74,23 +74,41 @@ class _MyHomePageState extends State<MyHomePage> {
         //   ],
         // )
 
-        body : Container(
-          height: 300,
-          child: GridView.extent(
+        // body : Container(
+        //   height: 300,
+        //   child: GridView.extent(
+        //     maxCrossAxisExtent: 100,
+        //     crossAxisSpacing: 11,
+        //     mainAxisSpacing: 11,
+        //     children: [
+        //       Container(color : arrColors[0]),
+        //       Container(color : arrColors[1]),
+        //       Container(color : arrColors[2]),
+        //       Container(color : arrColors[3]),
+        //       Container(color : arrColors[4]),
+        //       Container(color : arrColors[5]),
+        //       Container(color : arrColors[6]),
+        //       Container(color : arrColors[7]),
+        //     ],
+        //     ),
+        // )
+
+        body : GridView.builder(itemBuilder: (context, index){
+          return Container(color : arrColors[index]);
+        },
+          itemCount: arrColors.length, 
+          // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          //   crossAxisCount: 3, 
+          //   crossAxisSpacing : 3,
+          //   mainAxisSpacing : 11
+          //   ),
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 100,
-            crossAxisSpacing: 11,
-            mainAxisSpacing: 11,
-            children: [
-              Container(color : arrColors[0]),
-              Container(color : arrColors[1]),
-              Container(color : arrColors[2]),
-              Container(color : arrColors[3]),
-              Container(color : arrColors[4]),
-              Container(color : arrColors[5]),
-              Container(color : arrColors[6]),
-              Container(color : arrColors[7]),
-            ],
+            crossAxisSpacing : 3,
+            mainAxisSpacing : 11
             ),
+         
+
         )
     );
   }
