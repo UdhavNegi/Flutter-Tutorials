@@ -46,9 +46,12 @@ class MyHomePage extends StatefulWidget {
 
 // This is the homepage for our flutter app
 class _MyHomePageState extends State<MyHomePage> {
-  
-  var emailText = TextEditingController();
-  var passText = TextEditingController();
+
+  callBack()
+  {
+    print("Clicked !!");
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -56,58 +59,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.orange,
-          title: Text('Hellos'),
+          title: Text('Hello'),
         ),
-        // body: GridView.count(
-        //   crossAxisCount: 4,
-        //   crossAxisSpacing: 11,
-        //   mainAxisSpacing: 11,
-        //   children: [
-        //     Container(color : arrColors[0]),
-        //     Container(color : arrColors[1]),
-        //     Container(color : arrColors[2]),
-        //     Container(color : arrColors[3]),
-        //     Container(color : arrColors[4]),
-        //     Container(color : arrColors[5]),
-        //     Container(color : arrColors[6]),
-        //     Container(color : arrColors[7]),
-        //   ],
-        // )
-
-        // body : Container(
-        //   height: 300,
-        //   child: GridView.extent(
-        //     maxCrossAxisExtent: 100,
-        //     crossAxisSpacing: 11,
-        //     mainAxisSpacing: 11,
-        //     children: [
-        //       Container(color : arrColors[0]),
-        //       Container(color : arrColors[1]),
-        //       Container(color : arrColors[2]),
-        //       Container(color : arrColors[3]),
-        //       Container(color : arrColors[4]),
-        //       Container(color : arrColors[5]),
-        //       Container(color : arrColors[6]),
-        //       Container(color : arrColors[7]),
-        //     ],
-        //     ),
-        // )
-
-        body : GridView.builder(itemBuilder: (context, index){
-          return Container(color : arrColors[index]);
-        },
-          itemCount: arrColors.length, 
-          // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          //   crossAxisCount: 3, 
-          //   crossAxisSpacing : 3,
-          //   mainAxisSpacing : 11
-          //   ),
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 100,
-            crossAxisSpacing : 3,
-            mainAxisSpacing : 11
-            ),
-         
+        body: ElevatedButton(
+          child : Text('Click Me!!'),
+          onPressed: callBack,
 
         )
     );
