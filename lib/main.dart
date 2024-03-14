@@ -6,6 +6,9 @@ import 'package:flutter/widgets.dart';
 // for intel date and time
 // import 'package:intl/intl_browser.dart';
 import 'package:intl/intl.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +38,7 @@ class MyApp extends StatelessWidget {
                   fontSize: 11,
                   fontWeight: FontWeight.w500,
                   color: Colors.orange))),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+                home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -58,9 +61,20 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Colors.orange,
           title: Text('Custom widget'),
         ),
-        body: Icon(Icons.play_arrow,
-        size : 100,
-        color : Colors.orange
+        body: Center(
+          child : Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.play_circle_outline,
+                size : 50,
+                color : Colors.orange
+              ),
+              SizedBox(width : 11),
+              FaIcon(FontAwesomeIcons.amazon, color : Colors.orange),
+              FaIcon(FontAwesomeIcons.calendar, color : Colors.orange),
+            ],
+          )
         )
     );
   }
