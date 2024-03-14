@@ -58,30 +58,73 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Colors.orange,
           title: Text('Custom widget'),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+        body: Container(
+          width : double.infinity,
+          child: Wrap(
+            direction: Axis.horizontal,
+            alignment: WrapAlignment.center,
+            spacing : 11,
+            runSpacing: 11,
             children: [
               Container(
-                width : 150,
-                height: 70,
-                child: RoundedButton(btnName: "Play", icon : Icon(Icons.play_arrow), callback: (){
-                  print("Logged in!!");
-                }, textStyle: myTextStyle16(),),
+                width : 70,
+                height : 70,
+                color: Colors.deepOrangeAccent,
               ),
               Container(
-                height: 11,
+                width : 70,
+                height : 70,
+                color: Colors.brown,
               ),
               Container(
-                width : 150,
-                height: 50,
-                child: RoundedButton(btnName: "Play", 
-                // icon : Icon(Icons.play_arrow), 
-                callback: (){
-                  print("Logged in!!");
-                },
-                bgColor: Colors.orange,
-                textStyle: myTextStyle21(),),
+                width : 70,
+                height : 70,
+                color: Colors.blueAccent,
+              ),
+              Container(
+                width : 70,
+                height : 70,
+                color: Colors.yellow,
+              ),
+              Container(
+                width : 70,
+                height : 70,
+                color: Colors.deepOrangeAccent,
+              ),
+              Container(
+                width : 70,
+                height : 70,
+                color: Colors.deepOrangeAccent,
+              ),
+              Container(
+                width : 70,
+                height : 70,
+                color: Colors.brown,
+              ),
+              Container(
+                width : 70,
+                height : 70,
+                color: Colors.deepOrangeAccent,
+              ),
+              Container(
+                width : 70,
+                height : 70,
+                color: Colors.deepOrangeAccent,
+              ),
+              Container(
+                width : 70,
+                height : 70,
+                color: Colors.brown,
+              ),
+              Container(
+                width : 70,
+                height : 70,
+                color: Colors.brown,
+              ),
+              Container(
+                width : 70,
+                height : 70,
+                color: Colors.brown,
               ),
             ],
           ),
