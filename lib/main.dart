@@ -58,76 +58,26 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Colors.orange,
           title: Text('Custom widget'),
         ),
-        body: Container(
-          width : double.infinity,
-          child: Wrap(
-            direction: Axis.horizontal,
-            alignment: WrapAlignment.center,
-            spacing : 11,
-            runSpacing: 11,
-            children: [
-              Container(
-                width : 70,
-                height : 70,
-                color: Colors.deepOrangeAccent,
-              ),
-              Container(
-                width : 70,
-                height : 70,
-                color: Colors.brown,
-              ),
-              Container(
-                width : 70,
-                height : 70,
-                color: Colors.blueAccent,
-              ),
-              Container(
-                width : 70,
-                height : 70,
-                color: Colors.yellow,
-              ),
-              Container(
-                width : 70,
-                height : 70,
-                color: Colors.deepOrangeAccent,
-              ),
-              Container(
-                width : 70,
-                height : 70,
-                color: Colors.deepOrangeAccent,
-              ),
-              Container(
-                width : 70,
-                height : 70,
-                color: Colors.brown,
-              ),
-              Container(
-                width : 70,
-                height : 70,
-                color: Colors.deepOrangeAccent,
-              ),
-              Container(
-                width : 70,
-                height : 70,
-                color: Colors.deepOrangeAccent,
-              ),
-              Container(
-                width : 70,
-                height : 70,
-                color: Colors.brown,
-              ),
-              Container(
-                width : 70,
-                height : 70,
-                color: Colors.brown,
-              ),
-              Container(
-                width : 70,
-                height : 70,
-                color: Colors.brown,
-              ),
-            ],
+        body: Wrap(
+          children: [
+            
+            
+            
+            SizedBox.square(
+            dimension: 200,
+            child : ElevatedButton(onPressed: (){}, child : Text('Click'))
           ),
+            
+            SizedBox(
+              width : 20,
+            ),
+
+            SizedBox.square(
+            dimension: 200,
+            child : ElevatedButton(onPressed: (){}, child : Text('Click'))
+          ),
+          
+          ]
         )
     );
   }
