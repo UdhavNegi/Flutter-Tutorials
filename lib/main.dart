@@ -58,38 +58,9 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Colors.orange,
           title: Text('Custom widget'),
         ),
-        body: Center(
-          child: RichText(
-            text: TextSpan(
-              style : TextStyle(
-                color : Colors.grey,
-                fontSize: 21
-              ),
-            children: [
-              TextSpan(text : "Hello "),
-          
-              TextSpan(text : "World!", style: TextStyle(
-                fontSize: 34,
-                color : Colors.blue,
-                fontWeight: FontWeight.bold
-              ),
-              ),
-          
-              TextSpan(text : " Welcome to ", 
-              ),
-          
-              TextSpan(text : "Flutter", 
-              style : TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 43,
-                color : Colors.deepOrangeAccent,
-                fontStyle: FontStyle.italic
-              )
-          
-              ),
-          
-            ]
-          )),
+        body: Icon(Icons.play_arrow,
+        size : 100,
+        color : Colors.orange
         )
     );
   }
