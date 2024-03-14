@@ -1,5 +1,6 @@
 import 'package:first_app/Widgets/rounded_btn.dart';
 import 'package:first_app/ui_helper/util.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -59,22 +60,26 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.orange,
-          title: Text('Custom widget'),
+          title: Text('Positioned '),
         ),
-        body: Center(
-          child : Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+        body: Container(
+          // width :double.infinity,
+          // height : double.infinity,
+          width : 300,
+          color : Colors.blueGrey,
+          child : Stack(
             children: [
-              Icon(
-                Icons.play_circle_outline,
-                size : 50,
-                color : Colors.orange
+              Positioned(
+                bottom: 41,
+                right: 41,
+                child: Container(
+                  width : 100,
+                  height : 100,
+                  color : Colors.white
+                ),
               ),
-              SizedBox(width : 11),
-              FaIcon(FontAwesomeIcons.amazon, color : Colors.orange),
-              FaIcon(FontAwesomeIcons.calendar, color : Colors.orange),
             ],
-          )
+            )
         )
     );
   }
