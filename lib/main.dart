@@ -1,3 +1,4 @@
+import 'package:first_app/Widgets/rounded_btn.dart';
 import 'package:first_app/ui_helper/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -52,44 +53,40 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    var arrColors = [
-      Colors.red,
-      Colors.orange,
-      Colors.grey,
-      Colors.blue,
-      Colors.pink,
-      Colors.green,
-      Colors.purpleAccent,
-      Colors.brown
-    ];
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.orange,
           title: Text('Custom widget'),
         ),
-        body: Container(
-          width: 300,
-          height: 300,
-          child: Stack(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width : 200,
-                height : 200,
-                color : Colors.blueGrey
+                width : 150,
+                height: 70,
+                child: RoundedButton(btnName: "Play", icon : Icon(Icons.play_arrow), callback: (){
+                  print("Logged in!!");
+                }, textStyle: myTextStyle16(),),
               ),
-              Positioned(
-                top: 21,
-                left: 21,
-                child: Container(
-                  width : 260,
-                  height : 200,
-                  color : Colors.grey
-                ),
+              Container(
+                height: 11,
+              ),
+              Container(
+                width : 150,
+                height: 50,
+                child: RoundedButton(btnName: "Play", 
+                // icon : Icon(Icons.play_arrow), 
+                callback: (){
+                  print("Logged in!!");
+                },
+                bgColor: Colors.orange,
+                textStyle: myTextStyle21(),),
               ),
             ],
           ),
         )
-        );
+    );
   }
 }
 
