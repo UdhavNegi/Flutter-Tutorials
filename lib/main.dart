@@ -58,27 +58,16 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Colors.orange,
           title: Text('Custom widget'),
         ),
-        body: Wrap(
+        body: Row(
           children: [
-            
-            
-            
-            SizedBox.square(
-            dimension: 200,
-            child : ElevatedButton(onPressed: (){}, child : Text('Click'))
-          ),
-            
-            SizedBox(
-              width : 20,
-            ),
-
-            SizedBox.square(
-            dimension: 200,
-            child : ElevatedButton(onPressed: (){}, child : Text('Click'))
-          ),
-          
-          ]
-        )
+            Text('Hello ', style : TextStyle(fontSize: 16, color : Colors.grey)),
+            Text('World!', style : TextStyle(
+              fontSize: 40, color: Colors.purple, 
+              fontFamily: AutofillHints.addressCity,
+              fontWeight: FontWeight.bold
+              )),
+          ],
+          )
     );
   }
 }
