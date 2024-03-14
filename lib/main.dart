@@ -39,52 +39,43 @@ class MyApp extends StatelessWidget {
                   fontSize: 11,
                   fontWeight: FontWeight.w500,
                   color: Colors.orange))),
-                home: const MyHomePage(title: 'Flutter Demo Home Page'),
+                home: MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
+class MyHomePage extends StatefulWidget{
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<StatefulWidget> createState()
+  {
+    return MyHomeState();
+  }
 }
 
-// This is the homepage for our flutter app
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomeState extends State<MyHomePage>{
+  var count = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.orange,
-          title: Text('Positioned '),
-        ),
-        body: Container(
-          // width :double.infinity,
-          // height : double.infinity,
-          width : 300,
-          color : Colors.blueGrey,
-          child : Stack(
-            children: [
-              Positioned(
-                bottom: 41,
-                right: 41,
-                child: Container(
-                  width : 100,
-                  height : 100,
-                  color : Colors.white
-                ),
-              ),
-            ],
-            )
+      appBar : AppBar(
+        title : Text('Stateful'),
+      ),
+
+      body : Center(
+        child : Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Count : $count', style : TextStyle(fontSize: 34)),
+            ElevatedButton(onPressed: (){
+              setState(() {
+                count++;
+              });
+              print('count is $count');
+            }, child: Text('Increment Count'))
+          ],
         )
+      )
     );
   }
+
 }
-
-
-
-
