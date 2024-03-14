@@ -53,26 +53,45 @@ class MyHomePage extends StatefulWidget{
 }
 
 class MyHomeState extends State<MyHomePage>{
-  var count = 0;
+  var no1Controller = TextEditingController();
+  var no2Controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar : AppBar(
-        title : Text('Stateful'),
+        title : Text('Basic Calculations'),
       ),
 
-      body : Center(
-        child : Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Count : $count', style : TextStyle(fontSize: 34)),
-            ElevatedButton(onPressed: (){
-              setState(() {
-                count++;
-              });
-              print('count is $count');
-            }, child: Text('Increment Count'))
-          ],
+      body : Container(
+        color : Colors.blue.shade100,
+        child : Center(
+          child : Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextField(
+                  controller: no1Controller,
+                ),
+            
+            
+                TextField(
+                  controller: no2Controller,
+                ),
+            
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(onPressed: (){}, child: Text('Add')),
+                    ElevatedButton(onPressed: (){}, child: Text('Sub')),
+                    ElevatedButton(onPressed: (){}, child: Text('Mult')),
+                    ElevatedButton(onPressed: (){}, child: Text('Div')),
+                  ],
+                )
+              ],
+            ),
+          )
         )
       )
     );
