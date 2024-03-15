@@ -1,36 +1,38 @@
-import 'package:first_app/IntroPage.dart';
-import 'package:first_app/Widgets/rounded_btn.dart';
-import 'package:first_app/ui_helper/util.dart';
-import 'package:flutter/cupertino.dart';
+// import 'package:first_app/my_profile_screen.dart.dart';
+// import 'package:first_app/Widgets/rounded_btn.dart';
+// import 'package:first_app/splash_screen.dart';
+// import 'package:first_app/ui_helper/util.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+// import 'package:flutter/widgets.dart';
 
-import './IntroPage.dart';
+// import 'my_profile_screen.dart.dart';
 
 
 
 void main() {
-  runApp(const MyApp());
+  runApp(FlutterApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class FlutterApp extends StatelessWidget {
+  // const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
             primarySwatch: Colors.blue
             ),
-            home: IntroPage(),
+            home: DashBoardScreen(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget{
+// This is created by me 
+class DashBoardScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +40,9 @@ class MyHomePage extends StatelessWidget{
         title : Text('Classico'),
         backgroundColor: Colors.orange,
       ),
-      body : Container(
-        color : Colors.blue.shade200
-      )
+      body : Text('Hello world'),
+  
     );
   }
 }
+
