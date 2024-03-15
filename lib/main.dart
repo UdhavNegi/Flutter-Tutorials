@@ -1,6 +1,7 @@
 // import 'package:first_app/IntroPage.dart';
 // import 'package:first_app/Widgets/rounded_btn.dart';
 // import 'package:first_app/ui_helper/util.dart';
+import 'package:first_app/my_profile_screen.dart';
 import 'package:first_app/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,8 +33,7 @@ class MyApp extends StatelessWidget {
 }
 
 class DashBoardScreen extends StatelessWidget{
-
-  var fun = () => print("inside dash board screen");
+  var nameController = TextEditingController();
  
 
   @override
@@ -41,13 +41,32 @@ class DashBoardScreen extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         title : Text('Dashboard'),
+        backgroundColor: Colors.blue,
       ),
       body : Center(
         child: Container(
+          width : 3000,
           child : Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('DashBoard Screen')
+              Text('DashBoard Screen', style : TextStyle(
+                fontSize: 25,
+              )), 
+              SizedBox(height : 11),
+              TextField(
+                controller: nameController,
+              ),
+              SizedBox(height : 11),
+              Column(
+                children: [
+                  ElevatedButton(onPressed: (){
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(builder: (context) => ProfileScreen(nameController.text.toString()))
+                    );
+                  }, child: Text('My Profile')),
+                ],
+              )
             ],
           )
         ),
