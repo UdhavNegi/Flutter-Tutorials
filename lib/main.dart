@@ -1,13 +1,11 @@
+import 'package:first_app/IntroPage.dart';
 import 'package:first_app/Widgets/rounded_btn.dart';
 import 'package:first_app/ui_helper/util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-// for intel date and time
-// import 'package:intl/intl_browser.dart';
-import 'package:intl/intl.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import './IntroPage.dart';
 
 
 
@@ -25,61 +23,24 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          // colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-          // useMaterial3: true,
-          primarySwatch: Colors.blue,
-          textTheme: TextTheme(
-              headline1: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
-              headline2: TextStyle(
-                  fontSize: 21,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.lightGreen),
-              subtitle1: TextStyle(fontSize: 11, fontWeight: FontWeight.w500),
-              subtitle2: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.orange))),
-                home: MyHomePage(),
+            primarySwatch: Colors.blue
+            ),
+            home: IntroPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState()
-  {
-    return MyHomeState();
-  }
-}
-
-class MyHomeState extends State<MyHomePage>{
-  var no1Controller = TextEditingController();
-  var no2Controller = TextEditingController();
-
-  var result = "";
-
+class MyHomePage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar : AppBar(
-        title : Text('Hello'),
+      appBar: AppBar(
+        title : Text('Classico'),
         backgroundColor: Colors.orange,
       ),
-
-      body : ConstrainedBox(
-        constraints: BoxConstraints(
-          maxWidth: 200,
-          maxHeight: 200, 
-          minHeight: 100
-
-        ),
-        child: Text('Hello World, Hello World, Hello World, Hello World, Hello World, Hello World, Hello World, Hello World, Hello World, Hello World, Hello World', style: TextStyle(
-          fontSize: 21,
-          overflow: TextOverflow.fade
-          
-          ),),
+      body : Container(
+        color : Colors.blue.shade200
       )
     );
   }
-
 }
