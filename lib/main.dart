@@ -62,84 +62,22 @@ class MyHomeState extends State<MyHomePage>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar : AppBar(
-        title : Text('Basic Calculations'),
-        backgroundColor: Colors.blue,
+        title : Text('Hello'),
+        backgroundColor: Colors.orange,
       ),
 
-      body : Container(
-        color : Colors.blue.shade100,
-        child : Center(
-          child : Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextField(
-                  keyboardType: TextInputType.number,
-                  controller: no1Controller,
-                ),
-            
-            
-                TextField(
-                  keyboardType: TextInputType.number,
-                  controller: no2Controller,
-                ),
-            
-                Padding(
-                  padding: const EdgeInsets.all(21.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(onPressed: (){
-                        var no1 = int.parse(no1Controller.text.toString());
-                        var no2 = int.parse(no2Controller.text.toString());
+      body : ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: 200,
+          maxHeight: 200, 
+          minHeight: 100
 
-                        var sum = no1 + no2;
-                        result = "The sum of $no1 and $no2 is $sum";
-                        setState(() {
-                          
-                        });
-                      }, 
-                      child: Text('Add'), 
-                      style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                      ),
-                      ElevatedButton(onPressed: (){
-                        var no1 = int.parse(no1Controller.text.toString());
-                        var no2 = int.parse(no2Controller.text.toString());
-
-                        var diff = no1 - no2;
-                        result = "The difference between $no1 and $no2 is $diff";
-                        setState(() {});
-                      },
-                      child: Text('Sub'), 
-                      ),
-                      ElevatedButton(onPressed: (){
-                        var no1 = int.parse(no1Controller.text.toString());
-                        var no2 = int.parse(no2Controller.text.toString());
-
-                        var mul = no1 * no2;
-                        result = "The Producrt of $no1 and $no2 is $mul";
-                        setState(() {});
-                      }, child: Text('Mult')),
-                      ElevatedButton(onPressed: (){
-                        var no1 = int.parse(no1Controller.text.toString());
-                        var no2 = int.parse(no2Controller.text.toString());
-
-                        var div = no1 / no2;
-                        result = "The division of $no1 by $no2 is $div";
-                        setState(() {});
-                      }, child: Text('Div')),
-                    ],
-                  ),
-                ),
-
-                Padding(padding: EdgeInsets.all(21), 
-                        child : Text(result, style : TextStyle(fontSize: 25))
-                )
-              ],
-            ),
-          )
-        )
+        ),
+        child: Text('Hello World, Hello World, Hello World, Hello World, Hello World, Hello World, Hello World, Hello World, Hello World, Hello World, Hello World', style: TextStyle(
+          fontSize: 21,
+          overflow: TextOverflow.fade
+          
+          ),),
       )
     );
   }
