@@ -31,127 +31,62 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var wtController = TextEditingController();
-  var ftController = TextEditingController();
-  var inchController = TextEditingController();
-  var result = "";
-  var bgColor = Colors.indigo.shade200;
+  var _width = 200.0;
+  var _height = 100.0;
+  bool flag = true;
+  Color bgColor = Colors.blueGrey;
+
+  Decoration myDecor = BoxDecoration(
+    borderRadius: BorderRadius.circular(2), 
+    color : Colors.blueGrey,
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Your BMI'),
+        title: Text(widget.title),
       ),
-      body: Container(
-            color : bgColor,  
-        child: Center(
-          child: Container(
-            width : 300,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('BMI', style : TextStyle(
-                  fontSize: 34,
-                  fontWeight: FontWeight.w700,
-                )),
-            
-                SizedBox(height : 21) ,
-            
-                TextField(
-                  controller: wtController,
-                  decoration: InputDecoration(
-                    label : Text('Enter your weight in KGs '),
-                    prefixIcon: Icon(Icons.line_weight)
-                  ), 
-                  keyboardType: TextInputType.number,
-                ), 
-            
-            
-                TextField(
-                  controller: ftController,
-                  decoration: InputDecoration(
-                    label : Text('Enter your height in feet '),
-                    prefixIcon: Icon(Icons.height)
-                  ), 
-                  keyboardType: TextInputType.number,
-                ), 
-            
-            
-            
-                TextField(
-                  controller: inchController,
-                  decoration: InputDecoration(
-                    label : Text('Enter your height in inch '),
-                    prefixIcon: Icon(Icons.height)
-                  ), 
-                  keyboardType: TextInputType.number,
-                ), 
-        
-                SizedBox(height : 16),
-        
-                ElevatedButton(onPressed: (){
-                  var wt = wtController.text.toString();
-                  var ft = ftController.text.toString();
-                  var inch = inchController.text.toString();
-        
-                  if(wt != "" && ft != "" && inch != "")
-                  {
-                    // BMI Calculation
-        
-                    var iWt = int.parse(wt);
-                    var iFt = int.parse(ft);
-                    var iInch = int.parse(inch);
-        
-                    var tInch = (iFt*12) + iInch;
-                    var tCm = tInch * 2.54;
-                    var tM = tCm/100;
-        
-                    var bmi = iWt / (tM * tM);
-                    var msg = "";
-                    if(bmi > 25)
-                    {
-                      msg = "You are Overweight";
-                      bgColor = Colors.orange.shade200;
-                    }
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AnimatedContainer(
+              width : _width, 
+              height : _height,
+              curve : Curves.bounceInOut,
+              decoration: myDecor,
+              duration: Duration(seconds: 2), 
+            ), 
+            ElevatedButton(onPressed: (){
+              setState(() {
+                if(flag)
+                {
+                  _width = 100.0;
+                  _height = 200.0;
+                  myDecor = BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color : Colors.orange,
+                  );
+                  flag = false;
+                }
+                else 
+                {
+                  _width = 200.0;
+                  _height = 100.0;
+                  myDecor = BoxDecoration( 
+                    borderRadius: BorderRadius.circular(2),
+                    color : Colors.blueGrey,
+                  );
+                  flag = true;
+                }
+              });
 
-                    else if(bmi < 18)
-                    {
-                      msg = "You are Under Weight";
-                      bgColor = Colors.red.shade200;
-                    }
-
-                    else 
-                    {
-                      msg = "You are Healthy";
-                      bgColor = Colors.green.shade200;
-                    }
-
-                    setState(() {
-                      result = "$msg \n Your BMI is ${bmi.toStringAsFixed(4)}";
-                    });
-                  }
-        
-                  else 
-                  {
-                    setState(() {
-                      result = "Please fill all the required blanks!!";
-                    });
-                  }
-        
-                }, child: Text('Calculate')), 
-        
-                SizedBox(height : 11),
-        
-                Text(result, style : TextStyle(fontSize: 19)),
-        
-                
-              ],
-            ),
-          ),
-        ),
-      ),
+            }, child: Text('Animate'))
+          ],
+        )
+      ), 
     );
   }
 }
