@@ -1,69 +1,157 @@
-// import 'package:first_app/IntroPage.dart';
-// import 'package:first_app/Widgets/rounded_btn.dart';
-// import 'package:first_app/ui_helper/util.dart';
-// import 'package:first_app/my_profile_screen.dart';
-// import 'package:first_app/splash_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
-// import './IntroPage.dart';
-
-
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget{
-  Widget build(BuildContext context)
-  {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
-      home : MyHomePage()
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget{
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
   @override
-  State<StatefulWidget> createState()
-  {
-    return _MyHomePageState();
-  }
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>{
-
-  RangeValues values = RangeValues(0, 100);
+class _MyHomePageState extends State<MyHomePage> {
+  var wtController = TextEditingController();
+  var ftController = TextEditingController();
+  var inchController = TextEditingController();
+  var result = "";
+  var bgColor = Colors.indigo.shade200;
 
   @override
-  Widget build(BuildContext context)
-  {
-    RangeLabels labels = RangeLabels(values.start.toString(), values.end.toString());
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar : AppBar(
-        title: Text('Range'),
-        backgroundColor: Colors.blue,
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text('Your BMI'),
       ),
+      body: Container(
+            color : bgColor,  
+        child: Center(
+          child: Container(
+            width : 300,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('BMI', style : TextStyle(
+                  fontSize: 34,
+                  fontWeight: FontWeight.w700,
+                )),
+            
+                SizedBox(height : 21) ,
+            
+                TextField(
+                  controller: wtController,
+                  decoration: InputDecoration(
+                    label : Text('Enter your weight in KGs '),
+                    prefixIcon: Icon(Icons.line_weight)
+                  ), 
+                  keyboardType: TextInputType.number,
+                ), 
+            
+            
+                TextField(
+                  controller: ftController,
+                  decoration: InputDecoration(
+                    label : Text('Enter your height in feet '),
+                    prefixIcon: Icon(Icons.height)
+                  ), 
+                  keyboardType: TextInputType.number,
+                ), 
+            
+            
+            
+                TextField(
+                  controller: inchController,
+                  decoration: InputDecoration(
+                    label : Text('Enter your height in inch '),
+                    prefixIcon: Icon(Icons.height)
+                  ), 
+                  keyboardType: TextInputType.number,
+                ), 
+        
+                SizedBox(height : 16),
+        
+                ElevatedButton(onPressed: (){
+                  var wt = wtController.text.toString();
+                  var ft = ftController.text.toString();
+                  var inch = inchController.text.toString();
+        
+                  if(wt != "" && ft != "" && inch != "")
+                  {
+                    // BMI Calculation
+        
+                    var iWt = int.parse(wt);
+                    var iFt = int.parse(ft);
+                    var iInch = int.parse(inch);
+        
+                    var tInch = (iFt*12) + iInch;
+                    var tCm = tInch * 2.54;
+                    var tM = tCm/100;
+        
+                    var bmi = iWt / (tM * tM);
+                    var msg = "";
+                    if(bmi > 25)
+                    {
+                      msg = "You are Overweight";
+                      bgColor = Colors.orange.shade200;
+                    }
 
-      body : Center(
-        child: RangeSlider(
-          values : values,
-          labels : labels,
-          divisions : 20,
-          activeColor: Colors.green,
-          inactiveColor: Colors.green.shade100,
-          min : 0,
-          max : 100,
-          onChanged: (newValue){
-            values = newValue;
-            print('${newValue.start}, ${newValue.end}');
-            setState(() {
-              
-            });
-          },
-        )
-        )
+                    else if(bmi < 18)
+                    {
+                      msg = "You are Under Weight";
+                      bgColor = Colors.red.shade200;
+                    }
+
+                    else 
+                    {
+                      msg = "You are Healthy";
+                      bgColor = Colors.green.shade200;
+                    }
+
+                    setState(() {
+                      result = "$msg \n Your BMI is ${bmi.toStringAsFixed(4)}";
+                    });
+                  }
+        
+                  else 
+                  {
+                    setState(() {
+                      result = "Please fill all the required blanks!!";
+                    });
+                  }
+        
+                }, child: Text('Calculate')), 
+        
+                SizedBox(height : 11),
+        
+                Text(result, style : TextStyle(fontSize: 19)),
+        
+                
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
