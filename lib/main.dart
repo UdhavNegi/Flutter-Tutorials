@@ -1,8 +1,8 @@
 // import 'package:first_app/IntroPage.dart';
 // import 'package:first_app/Widgets/rounded_btn.dart';
 // import 'package:first_app/ui_helper/util.dart';
-import 'package:first_app/my_profile_screen.dart';
-import 'package:first_app/splash_screen.dart';
+// import 'package:first_app/my_profile_screen.dart';
+// import 'package:first_app/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -12,65 +12,58 @@ import 'package:flutter/widgets.dart';
 
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
+class MyApp extends StatelessWidget{
+  Widget build(BuildContext context)
+  {
     return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-            primarySwatch: Colors.blue
-            ),
-            home: SplashScreen(),
+      home : MyHomePage()
     );
   }
 }
 
-class DashBoardScreen extends StatelessWidget{
-  var nameController = TextEditingController();
- 
+class MyHomePage extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState()
+  {
+    return _MyHomePageState();
+  }
+}
+
+class _MyHomePageState extends State<MyHomePage>{
+
+  RangeValues values = RangeValues(0, 100);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)
+  {
+    RangeLabels labels = RangeLabels(values.start.toString(), values.end.toString());
     return Scaffold(
-      appBar: AppBar(
-        title : Text('Dashboard'),
+      appBar : AppBar(
+        title: Text('Range'),
         backgroundColor: Colors.blue,
       ),
+
       body : Center(
-        child: Container(
-          width : 3000,
-          child : Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('DashBoard Screen', style : TextStyle(
-                fontSize: 25,
-              )), 
-              SizedBox(height : 11),
-              TextField(
-                controller: nameController,
-              ),
-              SizedBox(height : 11),
-              Column(
-                children: [
-                  ElevatedButton(onPressed: (){
-                    Navigator.push(
-                      context, 
-                      MaterialPageRoute(builder: (context) => ProfileScreen(nameController.text.toString()))
-                    );
-                  }, child: Text('My Profile')),
-                ],
-              )
-            ],
-          )
-        ),
-      )
+        child: RangeSlider(
+          values : values,
+          labels : labels,
+          divisions : 20,
+          activeColor: Colors.green,
+          inactiveColor: Colors.green.shade100,
+          min : 0,
+          max : 100,
+          onChanged: (newValue){
+            values = newValue;
+            print('${newValue.start}, ${newValue.end}');
+            setState(() {
+              
+            });
+          },
+        )
+        )
     );
   }
 }
