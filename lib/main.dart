@@ -24,54 +24,51 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _MyHomePage();
   }
-
 }
 
 class _MyHomePage extends State<MyHomePage> with SingleTickerProviderStateMixin{
-  late Animation animation;
-  late Animation colorAnimation;
-  late AnimationController animationController;
+  late Animation _animatation;
+  late AnimationController _animationController;
+
+  var listRadius = [150.0, 200.0, 250.0, 300.0, 350.0];
 
   @override
   void initState()
   {
     super.initState();
-    animationController = AnimationController(vsync: this, duration: Duration(seconds: 5));
-    animation = Tween(begin : 200.0, end : 100.0).animate(animationController);
+    _animationController = AnimationController(vsync: this, duration: Duration(seconds: 4));
+    _animatation = Tween(begin : 0.0, end : 1.0).animate(_animationController);
 
-    colorAnimation = ColorTween(begin : Colors.blue, end : Colors.orange).animate(animationController);
+    _animationController.addListener(() { });
 
-    animationController.addListener(() { 
-      setState(() {
-        
-      });
-     });
-
-     animationController.forward();
-
+    _animationController.forward();
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tween Animation"),
+        title: const Text("Ripple Animation Effect"),
         backgroundColor: Colors.blue,
       ),
 
       body : Center(
-        child: Container(
-          width : animation.value, 
-          height : animation.value,
-          color : colorAnimation.value
-        ),
+        child: Center(
+          child: Stack(
+            children: listRadius.map((radius) => Container(
+              width : radius* _animatation.value, 
+              height: radius * _animatation.value,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle, 
+                color : Colors.blue.withOpacity(1.0 - _animatation.value)
+              ),
+            )).toList(),
+          )
+          )
       )
 
     );
   }
-
 }
