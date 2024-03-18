@@ -64,14 +64,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
   
-  void getValue() async{
-    var prefs = await SharedPreferences.getInstance();
 
-    var getName = prefs.getString(KEYNAME);
-
-    nameValue = getName ?? "No Value Saved";
-    setState(() {
-      
-    });
-  }
 }
