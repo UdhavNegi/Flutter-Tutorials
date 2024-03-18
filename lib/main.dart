@@ -41,25 +41,18 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("3D List"),
+        title: Center(child: Text("Clippers", style : TextStyle(color: Colors.white))),
       ),
       body: Center(
-        child: ListWheelScrollView(
-          itemExtent: 100,
-          children: arrIndex.map((value) => Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              child : Center(child: Text('$value', style : TextStyle(fontSize: 21, color : Colors.white))),
-              decoration: BoxDecoration(
-              color : Colors.blue, 
-              borderRadius: BorderRadius.circular(10),
-
-              ),
-              width : double.infinity, 
-            ),
-          )).toList(), 
-          
-        ),
+        child: ClipRRect(
+          // borderRadius: BorderRadius.all(Radius.elliptical(71, 51)),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(21), bottomRight: Radius.circular(21)),
+          child: Container(
+            color : Colors.grey, 
+            width : 400, 
+            height : 200
+          )
+          ),
       )
     );
   }
