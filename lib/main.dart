@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,63 +13,110 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyHomePage()
+      home: const MyHomePage(title: 'Shared Preferences'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget{
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
   @override
-  State<StatefulWidget> createState() {
-    return _MyHomePage();
-  }
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePage extends State<MyHomePage> with SingleTickerProviderStateMixin{
-  late Animation _animatation;
-  late AnimationController _animationController;
+class _MyHomePageState extends State<MyHomePage> {
 
-  var listRadius = [150.0, 200.0, 250.0, 300.0, 350.0];
+  var nameController = TextEditingController();
+
+  static const String KEYNAME  = "name";
+  var nameValue = "No Value Saved";
 
   @override
   void initState()
   {
     super.initState();
-    _animationController = AnimationController(vsync: this, duration: Duration(seconds: 4));
-    _animatation = Tween(begin : 0.0, end : 1.0).animate(_animationController);
-
-    _animationController.addListener(() { });
-
-    _animationController.forward();
+    getValue();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Ripple Animation Effect"),
-        backgroundColor: Colors.blue,
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
       ),
+      body: Center(
+        child: Container(
+          width: 300,
+          child : Column(
+            
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextField(
+                controller: nameController,
+                decoration: InputDecoration(
+                  hintText: "Name",
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(11),
+                    borderSide: BorderSide(
+                      color : Colors.black, 
+                      width : 2, 
+                      
+                    )
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(11),
+                    borderSide: BorderSide(
+                      color : Colors.blue, 
+                      width : 2
+                    )
+                  )
+                ),
+              ), 
 
-      body : Center(
-        child: Center(
-          child: Stack(
-            children: listRadius.map((radius) => Container(
-              width : radius* _animatation.value, 
-              height: radius * _animatation.value,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle, 
-                color : Colors.blue.withOpacity(1.0 - _animatation.value)
+              SizedBox(
+                height: 11,
+              ), 
+
+              ElevatedButton(onPressed: ()async {
+
+                var name = nameController.text.toString();
+
+                var prefs = await SharedPreferences.getInstance();
+                prefs.setString(KEYNAME, name);
+        
+              }, child: Text('Save')), 
+
+              SizedBox(
+                height: 11,
               ),
-            )).toList(),
-          )
-          )
-      )
 
+              Text(nameValue, style : TextStyle(color : Colors.grey, fontWeight: FontWeight.bold))
+
+            ],
+          )
+        ),
+      )
     );
   }
+  
+  void getValue() async{
+    var prefs = await SharedPreferences.getInstance();
+
+    var getName = prefs.getString(KEYNAME);
+
+    nameValue = getName ?? "No Value Saved";
+    setState(() {
+      
+    });
+  }
 }
+ 
