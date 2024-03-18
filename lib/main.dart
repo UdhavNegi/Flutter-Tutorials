@@ -46,14 +46,11 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: ClipRRect(
           // borderRadius: BorderRadius.all(Radius.elliptical(71, 51)),
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(21), bottomRight: Radius.circular(21)),
-          child: Container(
-            color : Colors.grey, 
-            width : 400, 
-            height : 200
-          )
+          // borderRadius: BorderRadius.only(topLeft: Radius.circular(21), bottomRight: Radius.circular(21)),
+          // child: Image.asset('/assets/images/img1.jpg'),
           ),
       )
+
     );
   }
 }
