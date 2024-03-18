@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 
 void main() {
   runApp(const MyApp());
@@ -17,41 +16,46 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage()
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  var arrIndex = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+class MyHomePage extends StatelessWidget{
+  var arrData = [
+    
+    "Violet Schoen", "Davon Bashirian","Sidney Farrell","Stephanie Kshlerin","Gunnar Schneider Jr.","Cassandre Daniel",
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text("Map"),
         backgroundColor: Colors.blue,
-        title: Center(child: Text("Clippers", style : TextStyle(color: Colors.white))),
       ),
-      body: Center(
-        child: ClipRRect(
-          // borderRadius: BorderRadius.all(Radius.elliptical(71, 51)),
-          // borderRadius: BorderRadius.only(topLeft: Radius.circular(21), bottomRight: Radius.circular(21)),
-          // child: Image.asset('/assets/images/img1.jpg'),
-          ),
+
+      body : Container(
+        child : ListView(
+          children: arrData.map((value) =>
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(21), 
+                  color : Colors.blue.shade100
+                ),
+                child : Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(child: Text(value)),
+                ), 
+                
+                ),
+            )
+          ).toList(),
+        )
       )
 
     );
   }
+
 }
- 
