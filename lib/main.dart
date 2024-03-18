@@ -21,38 +21,54 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget{
-  var arrData = [
-    
-    "Violet Schoen", "Davon Bashirian","Sidney Farrell","Stephanie Kshlerin","Gunnar Schneider Jr.","Cassandre Daniel",
-  ];
+class MyHomePage extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _MyHomePage();
+  }
+
+}
+
+class _MyHomePage extends State<MyHomePage> with SingleTickerProviderStateMixin{
+  late Animation animation;
+  late Animation colorAnimation;
+  late AnimationController animationController;
+
+  @override
+  void initState()
+  {
+    super.initState();
+    animationController = AnimationController(vsync: this, duration: Duration(seconds: 5));
+    animation = Tween(begin : 200.0, end : 100.0).animate(animationController);
+
+    colorAnimation = ColorTween(begin : Colors.blue, end : Colors.orange).animate(animationController);
+
+    animationController.addListener(() { 
+      setState(() {
+        
+      });
+     });
+
+     animationController.forward();
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Map"),
+        title: Text("Tween Animation"),
         backgroundColor: Colors.blue,
       ),
 
-      body : Container(
-        child : ListView(
-          children: arrData.map((value) =>
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(21), 
-                  color : Colors.blue.shade100
-                ),
-                child : Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(child: Text(value)),
-                ), 
-                
-                ),
-            )
-          ).toList(),
-        )
+      body : Center(
+        child: Container(
+          width : animation.value, 
+          height : animation.value,
+          color : colorAnimation.value
+        ),
       )
 
     );
