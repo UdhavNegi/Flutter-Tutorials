@@ -1,8 +1,10 @@
-import 'dart:convert';
+// import 'dart:convert';
 
 import 'package:first_app/model/user.dart';
+import 'package:first_app/services/user_api.dart';
+// import 'package:first_app/model/user_name.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MyApp());
@@ -40,8 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState()
   {
     super.initState();
-    getData();
-    print("users is $users");
+    fetchUsers();
   }
 
   @override
@@ -58,8 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
           final email = user.email;
           final color = user.gender == 'male' ? Colors.blue : Colors.green;
           return ListTile(
-            // leading: CircleAvatar(child: Text("${(index+1).toString()}")),
-            title: Text(email),
+            title: Text(user.fullName),
             subtitle: Text(user.phone),
             tileColor: color,
           );
@@ -67,21 +67,15 @@ class _MyHomePageState extends State<MyHomePage> {
         )
     );
   }
-  
-  void getData() async {
-    final uri = Uri.parse('https://randomuser.me/api/?results=200');
-    final response = await http.get(uri);
-    final body = response.body;
-    final json = jsonDecode(body);
-    final results = json['results'] as List<dynamic>;
-    final transformed = results.map((e){
-      final name = UserName(title: e['name']['title'], first: e['name']['first'], last: e['name']['last']);
-      return User(gender: e['gender'], email: e['email'], phone: e['phone'], cell: e['cell'], nat: e['nat'], name : name);
-    }).toList();
 
+  Future<void> fetchUsers() async 
+  {
+    final response = await UserApi.fetchUsers();
     setState(() {
-      users = transformed;
+      users = response;
     });
-    
+
   }
+  
+  
 }
