@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:first_app/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -34,7 +35,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  List<dynamic> users = [];
+  List<User> users = [];
   
   void initState()
   {
@@ -45,7 +46,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    var arrNames = ["first", "second", "third"];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -55,15 +55,13 @@ class _MyHomePageState extends State<MyHomePage> {
         itemCount: users.length,
         itemBuilder: (context, index){
           final user = users[index];
-          final email = user["email"];
+          final email = user.email;
+          final color = user.gender == 'male' ? Colors.blue : Colors.green;
           return ListTile(
-            leading: CircleAvatar(child: Text("${(index+1).toString()}")),
-            title: Text(users[index]["name"]["first"]),
-            subtitle: Text(users[index]["email"]),
-            trailing: ClipRRect(
-              borderRadius: BorderRadius.circular(100),
-              child: Image.network(users[index]["picture"]["thumbnail"])
-              ),
+            // leading: CircleAvatar(child: Text("${(index+1).toString()}")),
+            title: Text(email),
+            subtitle: Text(user.phone),
+            tileColor: color,
           );
         }
         )
@@ -75,8 +73,15 @@ class _MyHomePageState extends State<MyHomePage> {
     final response = await http.get(uri);
     final body = response.body;
     final json = jsonDecode(body);
+    final results = json['results'] as List<dynamic>;
+    final transformed = results.map((e){
+      final name = UserName(title: e['name']['title'], first: e['name']['first'], last: e['name']['last']);
+      return User(gender: e['gender'], email: e['email'], phone: e['phone'], cell: e['cell'], nat: e['nat'], name : name);
+    }).toList();
+
     setState(() {
-      users = json["results"];
+      users = transformed;
     });
+    
   }
 }
