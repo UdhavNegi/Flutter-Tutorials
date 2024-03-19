@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   
   void getData() async {
-    final uri = Uri.parse('https://randomuser.me/api/?results=100');
+    final uri = Uri.parse('https://randomuser.me/api/?results=200');
     final response = await http.get(uri);
     final body = response.body;
     final json = jsonDecode(body);
